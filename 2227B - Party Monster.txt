@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int t = Integer.parseInt(br.readLine());
+
+        StringBuilder ans = new StringBuilder();
+
+        while (t-- > 0) {
+            int n = Integer.parseInt(br.readLine());
+            String s = br.readLine();
+
+            int open = 0;
+            for (char c : s.toCharArray()) {
+                if (c == '(') open++;
+            }
+
+            int close = n - open;
+
+            ans.append(open == close ? "YES" : "NO").append('\n');
+        }
+
+        System.out.print(ans);
+    }
+}

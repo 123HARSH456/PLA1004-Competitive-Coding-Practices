@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder out = new StringBuilder();
+
+        int t = Integer.parseInt(br.readLine());
+
+        while (t-- > 0) {
+            int k = Integer.parseInt(br.readLine());
+            StringTokenizer st = new StringTokenizer(br.readLine());
+
+            boolean big = false;
+            int twice = 0;
+
+            for (int i = 0; i < k; i++) {
+                int x = Integer.parseInt(st.nextToken());
+                if (x >= 3) big = true;
+                if (x >= 2) twice++;
+            }
+
+            if (big || twice >= 2) out.append("YES\n");
+            else out.append("NO\n");
+        }
+
+        System.out.print(out);
+    }
+}

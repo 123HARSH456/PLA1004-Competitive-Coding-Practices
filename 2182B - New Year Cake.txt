@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+
+        long[] evenSum = new long[21];
+        long[] oddSum = new long[21];
+
+        long even = 0, odd = 0;
+        for (int i = 0; i < 20; i++) {
+            long size = 1L << i;
+            if ((i & 1) == 0)
+                even += size;
+            else
+                odd += size;
+
+            evenSum[i + 1] = even;
+            oddSum[i + 1] = odd;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (t-- > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            long a = Long.parseLong(st.nextToken());
+            long b = Long.parseLong(st.nextToken());
+
+            for (int layers = 20; layers >= 1; layers--) {
+                if ((evenSum[layers] <= a && oddSum[layers] <= b) ||
+                    (evenSum[layers] <= b && oddSum[layers] <= a)) {
+                    sb.append(layers).append('\n');
+                    break;
+                }
+            }
+        }
+
+        System.out.print(sb);
+    }
+}

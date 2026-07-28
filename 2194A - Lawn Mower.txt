@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while (t-- > 0) {
+            long n = sc.nextLong();
+            long w = sc.nextLong();
+            
+            long k;
+            if (n <= w - 1) {
+                k = 0;
+            } else {
+                k = (n - (w - 1) + w - 1) / w; 
+            }
+            
+            long removed = n - k;
+            System.out.println(removed);
+        }
+        
+        sc.close();
+    }
+}

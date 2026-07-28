@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+
+        StringBuilder sb = new StringBuilder();
+
+        while (t-- > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            long n = Long.parseLong(st.nextToken());
+            long x = Long.parseLong(st.nextToken());
+            long y = Long.parseLong(st.nextToken());
+            long z = Long.parseLong(st.nextToken());
+
+            long noAI = (n + (x + y) - 1) / (x + y);
+
+            long withAI;
+            if (n <= x * z) {
+                withAI = (n + x - 1) / x;
+            } else {
+                long rem = n - x * z;
+                withAI = z + (rem + (x + 10 * y) - 1) / (x + 10 * y);
+            }
+
+            sb.append(Math.min(noAI, withAI)).append('\n');
+        }
+
+        System.out.print(sb.toString());
+    }
+}
