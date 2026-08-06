@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        char[] s = sc.next().toCharArray();
+
+        while (m-- > 0) {
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+            char c1 = sc.next().charAt(0);
+            char c2 = sc.next().charAt(0);
+
+            for (int i = l - 1; i <= r - 1; i++) {
+                if (s[i] == c1) {
+                    s[i] = c2;
+                }
+            }
+        }
+
+        System.out.println(new String(s));
+    }
+}
