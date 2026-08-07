@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int t = Integer.parseInt(br.readLine());
+
+        while (t-- > 0) {
+            String s = br.readLine();
+            String best = "";
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) != '0') continue;
+
+                // Alice deletes this 0
+                String afterAlice = s.substring(0, i) + s.substring(i + 1);
+
+                // Bob deletes the leftmost 1
+                int firstOne = afterAlice.indexOf('1');
+                String finalStr = afterAlice.substring(0, firstOne)
+                                + afterAlice.substring(firstOne + 1);
+
+                if (best.isEmpty() || finalStr.compareTo(best) > 0) {
+                    best = finalStr;
+                }
+            }
+
+            System.out.println(best);
+        }
+    }
+}
