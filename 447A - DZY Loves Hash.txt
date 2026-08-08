@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int p = sc.nextInt();
+        int n = sc.nextInt();
+
+        boolean[] bucket = new boolean[p];
+
+        for (int i = 1; i <= n; i++) {
+            int x = sc.nextInt();
+
+            int index = x % p;
+
+            if (bucket[index]) {
+                System.out.println(i);
+                return;
+            }
+
+            bucket[index] = true;
+        }
+
+        System.out.println(-1);
+    }
+}
