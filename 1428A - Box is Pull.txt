@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            long x1 = sc.nextLong();
+            long y1 = sc.nextLong();
+            long x2 = sc.nextLong();
+            long y2 = sc.nextLong();
+
+            long dx = Math.abs(x2 - x1);
+            long dy = Math.abs(y2 - y1);
+
+            long ans = dx + dy;
+
+            if (dx > 0 && dy > 0) {
+                ans += 2;
+            }
+
+            System.out.println(ans);
+        }
+
+        sc.close();
+    }
+}

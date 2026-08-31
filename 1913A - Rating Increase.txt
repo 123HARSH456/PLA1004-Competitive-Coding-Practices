@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            String s = sc.next();
+
+            boolean found = false;
+
+            // Try every possible split
+            for (int i = 1; i < s.length(); i++) {
+
+                String aStr = s.substring(0, i);
+                String bStr = s.substring(i);
+
+                // b cannot have a leading zero
+                if (bStr.charAt(0) == '0') {
+                    continue;
+                }
+
+                long a = Long.parseLong(aStr);
+                long b = Long.parseLong(bStr);
+
+                if (b > a) {
+                    System.out.println(a + " " + b);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                System.out.println(-1);
+            }
+        }
+
+        sc.close();
+    }
+}

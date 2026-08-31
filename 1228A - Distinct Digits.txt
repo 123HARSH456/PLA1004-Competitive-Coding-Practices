@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main {
+
+    static boolean distinct(int n) {
+        boolean[] seen = new boolean[10];
+
+        while (n > 0) {
+            int digit = n % 10;
+
+            if (seen[digit]) {
+                return false;
+            }
+
+            seen[digit] = true;
+            n /= 10;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int l = sc.nextInt();
+        int r = sc.nextInt();
+
+        for (int x = l; x <= r; x++) {
+            if (distinct(x)) {
+                System.out.println(x);
+                return;
+            }
+        }
+
+        System.out.println(-1);
+    }
+}
